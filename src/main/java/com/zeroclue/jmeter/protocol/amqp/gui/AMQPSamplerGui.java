@@ -5,6 +5,7 @@ import org.apache.jmeter.gui.util.VerticalPanel;
 import org.apache.jmeter.samplers.gui.AbstractSamplerGui;
 import org.apache.jmeter.testelement.TestElement;
 import org.apache.jorphan.gui.JLabeledChoice;
+import org.apache.jorphan.gui.JLabeledPasswordField;
 import org.apache.jorphan.gui.JLabeledTextField;
 import org.apache.jorphan.logging.LoggingManager;
 import org.apache.log.Logger;
@@ -37,13 +38,13 @@ public abstract class AMQPSamplerGui extends AbstractSamplerGui {
     protected JLabeledTextField port = new JLabeledTextField("Port");
     protected JLabeledTextField timeout = new JLabeledTextField("Timeout");
     protected JLabeledTextField username = new JLabeledTextField("Username");
-    protected JLabeledTextField password = new JLabeledTextField("Password");
+    protected JLabeledPasswordField password = new JLabeledPasswordField("Password");
     private final JCheckBox SSL = new JCheckBox("SSL?", false);
     
-    protected JLabeledTextField keyStorePassPhrase = new JLabeledTextField("KeyStorePassPhrase");
+    protected JLabeledPasswordField keyStorePassPhrase = new JLabeledPasswordField("KeyStorePassPhrase");
     protected JLabeledTextField keyStore = new JLabeledTextField("KeyStore");
     
-    protected JLabeledTextField trustStorePassPhrase = new JLabeledTextField("TrustStorePassPhrase");
+    protected JLabeledPasswordField trustStorePassPhrase = new JLabeledPasswordField("TrustStorePassPhrase");
     protected JLabeledTextField trustStore = new JLabeledTextField("TrustStore");
     
 
