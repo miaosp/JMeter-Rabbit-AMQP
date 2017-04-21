@@ -13,7 +13,10 @@ import org.apache.log.Logger;
 
 import java.io.IOException;
 import java.security.KeyManagementException;
+import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
+import java.security.UnrecoverableKeyException;
+import java.security.cert.CertificateException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -262,7 +265,7 @@ public class AMQPPublisher extends AMQPSampler implements Interruptible {
         return builder.build();
     }
 
-    protected boolean initChannel() throws IOException, NoSuchAlgorithmException, KeyManagementException {
+    protected boolean initChannel() throws IOException, NoSuchAlgorithmException, KeyManagementException, KeyStoreException, CertificateException, UnrecoverableKeyException {
         boolean ret = super.initChannel();
         if (getUseTx()) {
             channel.txSelect();

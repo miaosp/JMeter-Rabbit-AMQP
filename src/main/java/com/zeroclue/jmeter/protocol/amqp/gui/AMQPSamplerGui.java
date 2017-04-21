@@ -39,6 +39,13 @@ public abstract class AMQPSamplerGui extends AbstractSamplerGui {
     protected JLabeledTextField username = new JLabeledTextField("Username");
     protected JLabeledTextField password = new JLabeledTextField("Password");
     private final JCheckBox SSL = new JCheckBox("SSL?", false);
+    
+    protected JLabeledTextField keyStorePassPhrase = new JLabeledTextField("KeyStorePassPhrase");
+    protected JLabeledTextField keyStore = new JLabeledTextField("KeyStore");
+    
+    protected JLabeledTextField trustStorePassPhrase = new JLabeledTextField("TrustStorePassPhrase");
+    protected JLabeledTextField trustStore = new JLabeledTextField("TrustStore");
+    
 
     private final JLabeledTextField iterations = new JLabeledTextField("Number of samples to Aggregate");
 
@@ -78,6 +85,11 @@ public abstract class AMQPSamplerGui extends AbstractSamplerGui {
         username.setText(sampler.getUsername());
         password.setText(sampler.getPassword());
         SSL.setSelected(sampler.connectionSSL());
+        keyStore.setText(sampler.getKeyStore());
+        keyStorePassPhrase.setText(sampler.getKeyStorePassPhrase());
+        trustStore.setText(sampler.getTrustStore());
+        trustStorePassPhrase.setText(sampler.getTrustStorePassPhrase());
+       
         log.info("AMQPSamplerGui.configure() called");
     }
 
@@ -144,6 +156,10 @@ public abstract class AMQPSamplerGui extends AbstractSamplerGui {
         sampler.setUsername(username.getText());
         sampler.setPassword(password.getText());
         sampler.setConnectionSSL(SSL.isSelected());
+        sampler.setKeyStore(keyStore.getText());
+        sampler.setKeyStorePassPhrase(keyStorePassPhrase.getText());
+        sampler.setTrustStore(trustStore.getText());
+        sampler.setTrustStorePassPhrase(trustStorePassPhrase.getText());
         log.info("AMQPSamplerGui.modifyTestElement() called, set user/pass to " + username.getText() + "/" + password.getText() + " on sampler " + sampler);
     }
 
@@ -264,8 +280,24 @@ public abstract class AMQPSamplerGui extends AbstractSamplerGui {
         serverSettings.add(port, gridBagConstraints);
 
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 0;
         serverSettings.add(SSL, gridBagConstraints);
+        
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        serverSettings.add(keyStore, gridBagConstraints);
+        
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        serverSettings.add(keyStorePassPhrase, gridBagConstraints);
+        
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        serverSettings.add(trustStore, gridBagConstraints);
+        
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        serverSettings.add(trustStorePassPhrase, gridBagConstraints);
 
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
